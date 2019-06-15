@@ -9,7 +9,7 @@ export class PizzaDataService {
   private pizzas: Pizza[] = [];
 
   constructor() { 
-    this.pizzas = this.getPizzas();
+    this.pizzas = this.getPizzasFromStorage();
   }
 
   addPizza(pizza: Pizza) {
@@ -22,6 +22,7 @@ export class PizzaDataService {
     this.pizzas = this.pizzas.filter(
       pizza => pizza.id != id
     );
+    this.savePizzas();
   }
   
   editPizza(edited: Pizza) {
@@ -40,12 +41,16 @@ export class PizzaDataService {
     localStorage.setItem("pizzas", JSON.stringify(this.pizzas));
   }
 
-  getPizzas(): Pizza[] {
+  getPizzasFromStorage(): Pizza[] {
     let data = localStorage.getItem("pizzas");
     if (data == null) {
       return config.defaultPizzas;
     } else {
       return JSON.parse(data);
     }
+  }
+
+  getPizzas(): Pizza[] {
+    return this.pizzas;
   }
 }
