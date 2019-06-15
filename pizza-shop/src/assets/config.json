@@ -6,7 +6,7 @@
             "description": "Pizza with just cheese",
             "price": 8.99,
             "ingredients": ["Tomato sauce", "Mozzarella"],
-            "image": "pizza.jpg"
+            "image": "assets/pizza.jpg"
         },
         {
             "id": 2,
@@ -14,7 +14,7 @@
             "description": "Pizza with 4 cheeses",
             "price": 12.99,
             "ingredients": ["Mozzarella", "Gorgonzola", "Parmesan", "Robiola"],
-            "image": "pizza.jpg"
+            "image": "assets/pizza.jpg"
         },
         {
             "id": 3,
@@ -22,7 +22,7 @@
             "description": "Pizza with tuna",
             "price": 10.99,
             "ingredients": ["Tomato sauce", "Tuna", "Olives", "Onions"],
-            "image": "pizza.jpg"
+            "image": "assets/pizza.jpg"
         },
         {
             "id": 4,
@@ -30,7 +30,7 @@
             "description": "Pizza with pepperoni",
             "price": 9.99,
             "ingredients": ["Tomato sauce", "Mozzarella", "Pepperoni"],
-            "image": "pizza.jpg"
+            "image": "assets/pizza.jpg"
         },
         {
             "id": 5,
@@ -38,7 +38,7 @@
             "description": "Pizza with chicken and BBQ sauce",
             "price": 14.99,
             "ingredients": ["Tomato sauce", "BBQ sauce", "Chicken", "Corn", "Bell Peppers"],
-            "image": "pizza.jpg"
+            "image": "assets/pizza.jpg"
         }
     ]
 }
