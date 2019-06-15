@@ -8,7 +8,5 @@ export class Pizza {
   
     constructor(values: Object = {}) {
       Object.assign(this, values);
-      //TODO
-      this.id = 1;
     }
 }
