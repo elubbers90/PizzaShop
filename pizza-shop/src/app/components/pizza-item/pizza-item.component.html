@@ -24,4 +24,22 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="_selected">
+    <div class="row">
+      <div *ngFor="let ingredient of pizza.ingredients" class="col">
+          <input type="checkbox"
+            id="{{ ingredient }}"
+            (click)="toggleIngredient(ingredient)"
+            checked/>
+          <label for="{{ ingredient }}">{{ ingredient }}</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="float-right" (click)="addPizza()">Add</button>
+      </div>
+    </div>
+  </div>
 </div>

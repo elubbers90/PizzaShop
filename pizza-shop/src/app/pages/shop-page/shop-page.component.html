@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
     <div id="pizzas" class="col-10">
-      <pizza-item *ngFor="let pizza of pizzas"
-        [pizza]="pizza">
+      <pizza-item 
+        *ngFor="let pizza of pizzas" 
+        (click)="selectPizzaToAdd(pizza)"
+        [pizza]="pizza"
+        [selected]="pizzaIsSelected(pizza)"
+        (onAdd)="addPizza($event)">
       </pizza-item>
     </div>
     <div id="shoppingcart" class="col-2">
