@@ -1,0 +1,46 @@
+<div class="container pizza-item">
+  <form class="simple-form" [formGroup]="pizzaForm" (ngSubmit)="editPizza()">
+    <div class="row">
+      <div class=col>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label>Name: <input type="text" formControlName="name"/></label><br />
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label>Price: <input type="number" formControlName="price"/></label><br />
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Description: <input type="text" formControlName="description"/></label><br />
+            </div>
+        </div>
+        <div formArrayName="ingredients"
+        *ngFor="let ingredient of ingredients.controls; let i=index" class="row">
+          <div class="col">
+            <input type="text" [formControlName]="i"/> 
+          </div>
+          <span class="close col" aria-label="Close" (click)="removeIngredient(i)">X</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+          <button class="float-right" type="submit" [disabled]="!pizzaForm.valid">Submit</button>
+        </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col">
+        <button class="float-right" (click)="addIngredient()" >Add Ingredient</button>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="float-right" (click)="deletePizza()">Delete</button>
+    </div>
+  </div>
+</div>

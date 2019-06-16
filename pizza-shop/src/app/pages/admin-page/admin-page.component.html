@@ -1,3 +1,16 @@
-<p>
-  admin-page works!
-</p>
+<div class="container">
+    <div class="row">
+      <div id="pizzas" class="col-8">
+        <pizza-edit-item 
+          *ngFor="let pizza of pizzas" 
+          [pizza]="pizza"
+          (onDelete)="deletePizza($event)"
+          (onEdit)="editPizza($event)">
+        </pizza-edit-item>
+      </div>
+      <div class="col-4">
+        <new-pizza
+        (onAdd)="addPizza($event)"></new-pizza>
+      </div>
+    </div>
+  </div>
