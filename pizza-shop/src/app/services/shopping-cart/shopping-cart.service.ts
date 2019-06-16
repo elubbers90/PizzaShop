@@ -16,7 +16,9 @@ export class ShoppingCartService {
   validateCart() {
     let availablePizzas = this.pizzaDataService.getPizzas();
     this.pizzas = this.pizzas.filter(pizza => {
-      return availablePizzas.findIndex(availablePizza => pizza.id == availablePizza.id) != -1;
+      return availablePizzas.findIndex(
+        availablePizza => pizza.id == availablePizza.id && pizza.price == availablePizza.price
+      ) != -1;
     });
   }
 
