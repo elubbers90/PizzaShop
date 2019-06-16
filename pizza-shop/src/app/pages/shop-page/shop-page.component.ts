@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzaDataService } from 'src/app/services/pizza-data/pizza-data.service';
 import { Pizza } from 'src/app/models/pizza/pizza';
+import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-shop-page',
@@ -11,7 +12,7 @@ import { Pizza } from 'src/app/models/pizza/pizza';
 export class ShopPageComponent implements OnInit {
   selectedPizza: Pizza;
 
-  constructor(private pizzaService: PizzaDataService) { }
+  constructor(private pizzaService: PizzaDataService, private cart: ShoppingCartService) { }
 
   ngOnInit() {
   }
@@ -29,5 +30,6 @@ export class ShopPageComponent implements OnInit {
   }
 
   addPizza(pizza: Pizza) {
+    this.cart.addPizza(pizza);
   }
 }

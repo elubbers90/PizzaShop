@@ -2,8 +2,6 @@ import {TestBed, inject} from '@angular/core/testing';
 import { PizzaDataService } from './pizza-data.service';
 import { Pizza } from 'src/app/models/pizza/pizza';
 
-let service: PizzaDataService;
-
 describe('PizzaDataService', () => {
   beforeEach(() => {
     localStorage.clear();

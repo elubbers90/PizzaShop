@@ -5,11 +5,11 @@
     </div>
     <div class=col-8>
       <div class="row">
-          <div class="col-9 pizza-name">
+          <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pizza-name">
               {{ pizza.name }}
           </div>
-          <div class="col-3">
-              &euro; {{ pizza.price }}
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+              &euro;&nbsp;{{ pizza.price.toFixed(2) }}
           </div>
       </div>
       <div class="row">

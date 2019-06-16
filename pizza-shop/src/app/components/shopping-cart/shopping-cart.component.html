@@ -1,0 +1,35 @@
+<div id="shoppingcart">
+  <div class="row">
+    <h3 class="col">
+      Shopping cart
+    </h3>
+  </div>
+
+  <div class="row">
+      <div class="col-lg-9 col-md-3 col-sm-12 col-xs-12">
+        Total price:
+      </div>
+      <div class="col-lg-9 col-md-3 col-sm-12 col-xs-12">
+        &euro;&nbsp;{{ totalPrice }}
+      </div>
+  </div>
+
+  <div *ngFor="let pizza of pizzas; let i = index" class="item">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+            {{ pizza.name }}
+        </div>    
+        <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+            &euro;&nbsp;{{ pizza.price }}
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <button class="float-lg-right" (click)="removePizza(i)">Remove</button>
+        </div>
+    </div>    
+    <div class="row">
+      <div class="col">
+          {{ getIngredientsString(pizza) }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div id="pizzas" class="col-10">
+    <div id="pizzas" class="col-8">
       <pizza-item 
         *ngFor="let pizza of pizzas" 
         (click)="selectPizzaToAdd(pizza)"
@@ -9,8 +9,8 @@
         (onAdd)="addPizza($event)">
       </pizza-item>
     </div>
-    <div id="shoppingcart" class="col-2">
-      Shoppingcart
+    <div class="col-4">
+      <shopping-cart></shopping-cart>
     </div>
   </div>
 </div>
