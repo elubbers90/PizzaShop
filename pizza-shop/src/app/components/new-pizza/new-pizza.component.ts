@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Pizza } from 'src/app/models/pizza/pizza';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'new-pizza',
@@ -20,9 +20,9 @@ export class NewPizzaComponent implements OnInit {
 
   createForm() {
     this.pizzaForm = new FormGroup({
-      name: new FormControl(""),
+      name: this.formBuilder.control('', Validators.required),
       description: new FormControl(""),
-      price: new FormControl(""),
+      price: this.formBuilder.control('', Validators.required),
       ingredients: this.formBuilder.array([])
     });
   }
@@ -44,7 +44,7 @@ export class NewPizzaComponent implements OnInit {
   }
   
   addIngredient() {
-    this.ingredients.push(this.formBuilder.control(''));
+    this.ingredients.push(this.formBuilder.control('', Validators.required));
   }
 
   removeIngredient(index: number) {

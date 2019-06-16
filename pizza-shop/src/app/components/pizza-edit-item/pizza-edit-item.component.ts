@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Pizza } from 'src/app/models/pizza/pizza';
 
 @Component({
@@ -19,9 +19,9 @@ export class PizzaEditItemComponent implements OnInit {
 
   ngOnInit() {
     this.pizzaForm = new FormGroup({
-      name: new FormControl(this.pizza.name),
+      name: this.formBuilder.control(this.pizza.name, Validators.required),
       description: new FormControl(this.pizza.description),
-      price: new FormControl(this.pizza.price),
+      price: this.formBuilder.control(this.pizza.price, Validators.required),
       ingredients: this.formBuilder.array(this.pizza.ingredients)
     });
   }
@@ -43,7 +43,7 @@ export class PizzaEditItemComponent implements OnInit {
   }
   
   addIngredient() {
-    this.ingredients.push(this.formBuilder.control(''));
+    this.ingredients.push(this.formBuilder.control('', Validators.required));
   }
 
   removeIngredient(index: number) {
