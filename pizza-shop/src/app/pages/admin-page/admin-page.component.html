@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+      <div id="pizzas" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <pizza-edit-item 
+          *ngFor="let pizza of pizzas" 
+          [pizza]="pizza"
+          (onDelete)="deletePizza($event)"
+          (onEdit)="editPizza($event)">
+        </pizza-edit-item>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <new-pizza
+        (onAdd)="addPizza($event)"></new-pizza>
+      </div>
+    </div>
+  </div>

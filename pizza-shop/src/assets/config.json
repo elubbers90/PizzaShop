@@ -1,0 +1,44 @@
+{
+    "defaultPizzas": [
+        {
+            "id": 1,
+            "name": "Margarita",
+            "description": "Pizza with just cheese",
+            "price": 8.99,
+            "ingredients": ["Tomato sauce", "Mozzarella"],
+            "image": "assets/pizza.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Quattro Formaggi",
+            "description": "Pizza with 4 cheeses",
+            "price": 12.99,
+            "ingredients": ["Mozzarella", "Gorgonzola", "Parmesan", "Robiola"],
+            "image": "assets/pizza.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Tonno",
+            "description": "Pizza with tuna",
+            "price": 10.99,
+            "ingredients": ["Tomato sauce", "Tuna", "Olives", "Onions"],
+            "image": "assets/pizza.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Pepperoni",
+            "description": "Pizza with pepperoni",
+            "price": 9.99,
+            "ingredients": ["Tomato sauce", "Mozzarella", "Pepperoni"],
+            "image": "assets/pizza.jpg"
+        },
+        {
+            "id": 5,
+            "name": "BBQ Chicken",
+            "description": "Pizza with chicken and BBQ sauce",
+            "price": 14.99,
+            "ingredients": ["Tomato sauce", "BBQ sauce", "Chicken", "Corn", "Bell Peppers"],
+            "image": "assets/pizza.jpg"
+        }
+    ]
+}
