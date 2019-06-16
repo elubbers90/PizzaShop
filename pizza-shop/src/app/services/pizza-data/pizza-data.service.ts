@@ -13,7 +13,11 @@ export class PizzaDataService {
   }
 
   addPizza(pizza: Pizza) {
-    pizza.id = Math.max(...this.pizzas.map(pizza => pizza.id)) + 1;
+    if (this.pizzas.length == 0){
+      pizza.id = 0;
+    } else {
+      pizza.id = Math.max(...this.pizzas.map(pizza => pizza.id)) + 1;
+    }
     this.pizzas.push(pizza);
     this.savePizzas();
   }
