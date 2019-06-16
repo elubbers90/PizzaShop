@@ -10,11 +10,11 @@
         Total price:
       </div>
       <div class="col-lg-9 col-md-3 col-sm-12 col-xs-12">
-        &euro;&nbsp;{{ totalPrice }}
+        &euro;&nbsp;{{ getTotalPrice() }}
       </div>
   </div>
 
-  <div *ngFor="let pizza of pizzas; let i = index" class="item">
+  <div *ngFor="let pizza of getCart(); let i = index" class="item">
     <div class="row">
         <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
             {{ pizza.name }}

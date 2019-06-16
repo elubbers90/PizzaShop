@@ -8,18 +8,9 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-car
   styleUrls: ['./shopping-cart.component.css'],
 })
 export class ShoppingCartComponent implements OnInit {
-  pizzas: Pizza[] = [];
-  totalPrice: string;
-
   constructor(private cart: ShoppingCartService) { }
 
   ngOnInit() {
-    this.cart.getCart().subscribe(updatedPizzas => {
-      this.pizzas = updatedPizzas;
-    });
-    this.cart.getPrice().subscribe(updatedPrice => {
-      this.totalPrice = updatedPrice.toFixed(2);
-    });
   }
 
   getIngredientsString(pizza: Pizza): String {
@@ -28,5 +19,13 @@ export class ShoppingCartComponent implements OnInit {
 
   removePizza(index: number) {
     this.cart.removePizza(index);
+  }
+
+  getCart(): Pizza[] {
+    return this.cart.getCart();
+  }
+
+  getTotalPrice(): string {
+    return this.cart.getPrice().toFixed(2);
   }
 }

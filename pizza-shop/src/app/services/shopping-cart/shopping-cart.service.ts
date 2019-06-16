@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Pizza } from 'src/app/models/pizza/pizza';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { PizzaDataService } from '../pizza-data/pizza-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
   private pizzas: Pizza[] = [];
-  private totalPrice: number = 0;
-  private pizzasSubject: BehaviorSubject<Pizza[]> = new BehaviorSubject<Pizza[]>(this.pizzas);
-  private priceSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  constructor() { 
+  constructor(private pizzaDataService: PizzaDataService) { 
     this.pizzas = this.getCartFromStorage();
-    this.pizzasSubject.next(this.pizzas);
-    this.priceSubject.next(this.getTotalPrice());
+    this.validateCart();
+  }
+
+  validateCart() {
+    let availablePizzas = this.pizzaDataService.getPizzas();
+    this.pizzas = this.pizzas.filter(pizza => {
+      return availablePizzas.findIndex(availablePizza => pizza.id == availablePizza.id) != -1;
+    });
   }
 
   addPizza(pizza: Pizza) {
@@ -29,9 +32,6 @@ export class ShoppingCartService {
 
   saveCart() {
     localStorage.setItem("shoppingCart", JSON.stringify(this.pizzas));
-    ;
-    this.pizzasSubject.next([...this.pizzas]);
-    this.priceSubject.next(this.getTotalPrice());
   }
 
   getCartFromStorage(): Pizza[] {
@@ -43,15 +43,11 @@ export class ShoppingCartService {
     }
   }
 
-  getTotalPrice(): number {
+  getPrice(): number {
     return this.pizzas.reduce((total, pizza) => total + (pizza.price || 0), 0);
   }
 
-  getCart(): Observable<Pizza[]> {
-    return this.pizzasSubject.asObservable();
-  }
-
-  getPrice(): Observable<number> {
-    return this.priceSubject.asObservable();
+  getCart(): Pizza[] {
+    return this.pizzas;
   }
 }
