@@ -5,6 +5,7 @@ import config from '../../../assets/config.json';
 @Injectable({
   providedIn: 'root'
 })
+// Service that stores the list of pizzas in localstorage
 export class PizzaDataService {
   private pizzas: Pizza[] = [];
 
@@ -12,6 +13,8 @@ export class PizzaDataService {
     this.pizzas = this.getPizzasFromStorage();
   }
 
+  // Adds a pizza to the list of pizzas and saves it in localstorage
+  // Sets the id of the pizza to be 0 when it's the first pizza or the highest current id + 1 if not
   addPizza(pizza: Pizza) {
     if (this.pizzas.length == 0){
       pizza.id = 0;
@@ -22,6 +25,7 @@ export class PizzaDataService {
     this.savePizzas();
   }
 
+  // Removes a pizza based on an id. Saves it in localstorage
   removePizza(id: Number) {
     this.pizzas = this.pizzas.filter(
       pizza => pizza.id != id
@@ -29,6 +33,8 @@ export class PizzaDataService {
     this.savePizzas();
   }
   
+  // Edits a given pizza, finds the pizza by id.
+  // If the id does not exist it will just add a new pizza.
   editPizza(edited: Pizza) {
     let index = this.pizzas.findIndex(
       pizza => pizza.id == edited.id
@@ -41,10 +47,13 @@ export class PizzaDataService {
     }
   }
 
+  // Saves the list of pizzas in storage
   savePizzas() {
     localStorage.setItem("pizzas", JSON.stringify(this.pizzas));
   }
 
+  // Gets the pizzas from storage. 
+  // If the pizzas item is not present in the storage we will get the 5 default pizzas from the json in the assets folder
   getPizzasFromStorage(): Pizza[] {
     let data = localStorage.getItem("pizzas");
     if (data == null) {
@@ -54,6 +63,7 @@ export class PizzaDataService {
     }
   }
 
+  // Returns the pizzas to any class that asks for it
   getPizzas(): Pizza[] {
     return this.pizzas;
   }
